@@ -46,12 +46,32 @@ export const renderExchangesDonutChart = (container, exchanges) => {
   const strokeWidth = 18;
   const radius = (Math.min(width, height) - strokeWidth) / 2;
   const total = exchanges.reduce((sum, item) => sum + Number(item.amount || 0), 0) || 1;
+  const formatCurrency = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  });
 
   const svg = createSvgElement("svg");
   svg.setAttribute("width", `${width}`);
   svg.setAttribute("height", `${height}`);
   svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
   svg.setAttribute("preserveAspectRatio", "none");
+
+  const labelGroup = createSvgElement("g");
+  const labelName = createSvgElement("text");
+  const labelValue = createSvgElement("text");
+  labelGroup.setAttribute("opacity", "0");
+  labelName.setAttribute("x", `${width / 2}`);
+  labelName.setAttribute("y", `${height / 2 - 6}`);
+  labelName.setAttribute("text-anchor", "middle");
+  labelName.setAttribute("class", "donut-label donut-label__name");
+  labelValue.setAttribute("x", `${width / 2}`);
+  labelValue.setAttribute("y", `${height / 2 + 16}`);
+  labelValue.setAttribute("text-anchor", "middle");
+  labelValue.setAttribute("class", "donut-label donut-label__value");
+  labelGroup.appendChild(labelName);
+  labelGroup.appendChild(labelValue);
 
   let currentAngle = 0;
   exchanges.forEach((exchange, index) => {
@@ -67,6 +87,17 @@ export const renderExchangesDonutChart = (container, exchanges) => {
     arc.setAttribute("stroke-width", `${strokeWidth}`);
     arc.setAttribute("stroke-linecap", "round");
     arc.setAttribute("opacity", "0.9");
+    arc.style.cursor = "pointer";
+    arc.addEventListener("mouseenter", () => {
+      labelName.textContent = exchange.name || "Exchange";
+      labelValue.textContent = exchange.value || formatCurrency.format(value);
+      labelGroup.setAttribute("opacity", "1");
+      arc.setAttribute("opacity", "1");
+    });
+    arc.addEventListener("mouseleave", () => {
+      labelGroup.setAttribute("opacity", "0");
+      arc.setAttribute("opacity", "0.9");
+    });
     svg.appendChild(arc);
     currentAngle += angle;
   });
@@ -77,6 +108,7 @@ export const renderExchangesDonutChart = (container, exchanges) => {
   center.setAttribute("r", `${radius - strokeWidth / 2}`);
   center.setAttribute("fill", "rgba(18, 15, 26, 0.9)");
   svg.appendChild(center);
+  svg.appendChild(labelGroup);
 
   container.innerHTML = "";
   container.appendChild(svg);
