@@ -41,13 +41,15 @@ export const renderExchangesDonutChart = (container, exchanges) => {
     return;
   }
 
-  const width = 160;
-  const height = 160;
-  const radius = 60;
+  const width = 214;
+  const height = 214;
   const strokeWidth = 18;
+  const radius = (Math.min(width, height) - strokeWidth) / 2;
   const total = exchanges.reduce((sum, item) => sum + Number(item.amount || 0), 0) || 1;
 
   const svg = createSvgElement("svg");
+  svg.setAttribute("width", `${width}`);
+  svg.setAttribute("height", `${height}`);
   svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
   svg.setAttribute("preserveAspectRatio", "none");
 
