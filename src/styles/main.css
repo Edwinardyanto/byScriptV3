@@ -34,7 +34,7 @@ body {
   color: var(--color-text);
   font-family: var(--font-sans);
   line-height: 1.5;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 .text-dense {
@@ -125,9 +125,10 @@ body::after {
 }
 
 .app {
-  display: grid;
+  display: flex;
   grid-template-columns: 240px 1fr;
-  height: 100vh;
+  min-height: 100dvh;
+  min-height: 100vh;
   gap: var(--gap-outer);
   padding: var(--gap-outer);
   position: relative;
@@ -137,6 +138,21 @@ body::after {
 #app {
   min-height: 100dvh;
   min-height: 100vh;
+  display: flex;
+}
+
+#app > aside {
+  flex: 0 0 240px;
+}
+
+#app > main {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+header {
+  height: 56px;
+  flex-shrink: 0;
 }
 
 .sidebar {
@@ -158,10 +174,8 @@ main {
 .main {
   display: flex;
   flex-direction: column;
-  height: calc(100dvh - 56px);
-  height: calc(100vh - 56px);
+  flex: 1 1 auto;
   gap: 6px;
-  overflow: hidden;
   min-height: 0;
 }
 
@@ -176,7 +190,7 @@ main {
 }
 
 .dashboard-row + .dashboard-row {
-  margin-top: 16px;
+  margin-top: 0;
 }
 
 .dashboard-row--full {
@@ -214,17 +228,17 @@ main {
 }
 
 #app > main > div:nth-child(2) {
-  flex: 2 1 0;
+  flex: 2 1 auto;
   min-height: 0;
 }
 
 #app > main > div.dashboard-row.dashboard-row--split.dashboard-row--summary {
-  flex: 1.5 1 0;
+  flex: 1.5 1 auto;
   min-height: 0;
 }
 
 #app > main > div.dashboard-row.dashboard-row--split.dashboard-row--bottom {
-  flex: 1 1 0;
+  flex: 1 1 auto;
   min-height: 0;
 }
 
