@@ -161,7 +161,7 @@ main {
   height: calc(100dvh - 56px);
   height: calc(100vh - 56px);
   gap: 6px;
-  overflow-y: hidden;
+  overflow: hidden;
   min-height: 0;
 }
 
@@ -206,6 +206,7 @@ main {
 .dashboard-row--bottom {
   grid-template-columns: 2fr 1fr;
   align-self: stretch;
+  overflow-y: auto;
 }
 
 .dashboard-row > .grid {
