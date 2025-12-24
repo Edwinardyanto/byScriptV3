@@ -638,7 +638,8 @@ body::after {
   box-shadow: none;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  width: 224px;
+  height: 224px;
   min-height: 0;
 }
 
