@@ -158,7 +158,8 @@ main {
 .main {
   display: flex;
   flex-direction: column;
-  flex: 1 1 auto;
+  height: calc(100dvh - 56px);
+  height: calc(100vh - 56px);
   gap: 6px;
   overflow-y: hidden;
   min-height: 0;
@@ -212,17 +213,17 @@ main {
 }
 
 #app > main > div:nth-child(2) {
-  flex: 2 0 0;
+  flex: 2 1 0;
   min-height: 0;
 }
 
 #app > main > div.dashboard-row.dashboard-row--split.dashboard-row--summary {
-  flex: 1.5 0 0;
+  flex: 1.5 1 0;
   min-height: 0;
 }
 
 #app > main > div.dashboard-row.dashboard-row--split.dashboard-row--bottom {
-  flex: 1 0 0;
+  flex: 1 1 0;
   min-height: 0;
 }
 
