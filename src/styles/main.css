@@ -136,6 +136,7 @@ body::after {
 
 #app {
   min-height: 100dvh;
+  min-height: 100vh;
 }
 
 .sidebar {
@@ -157,7 +158,7 @@ main {
 .main {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 1 1 auto;
   gap: 6px;
   overflow-y: hidden;
   min-height: 0;
