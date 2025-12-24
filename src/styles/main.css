@@ -149,6 +149,11 @@ body::after {
   height: calc(100vh - (var(--gap-outer) * 2));
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+}
+
 .main {
   display: flex;
   flex-direction: column;
