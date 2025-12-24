@@ -639,7 +639,7 @@ body::after {
   justify-content: center;
   align-items: center;
   height: 100%;
-  min-height: 0;
+  min-height: 224px;
 }
 
 .summary-total .stat-label,
