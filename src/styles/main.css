@@ -148,10 +148,11 @@ body::after {
 .main {
   display: flex;
   flex-direction: column;
+  height: 100dvh;
+  height: 100vh;
   gap: 6px;
   overflow-y: hidden;
   min-height: 0;
-  height: calc(100vh - (var(--gap-outer) * 2));
 }
 
 .dashboard-row {
@@ -159,6 +160,13 @@ body::after {
   column-gap: var(--gap-inner);
   row-gap: 8px;
   align-items: stretch;
+  position: relative;
+  width: 100%;
+  min-height: 0;
+}
+
+.dashboard-row + .dashboard-row {
+  margin-top: 16px;
 }
 
 .dashboard-row--full {
@@ -174,9 +182,9 @@ body::after {
 }
 
 .dashboard-row--summary {
-  flex: 1;
   min-height: 0;
   align-items: stretch;
+  align-self: stretch;
 }
 
 .dashboard-row--summary .dashboard-left > .section,
@@ -187,6 +195,26 @@ body::after {
 
 .dashboard-row--bottom {
   grid-template-columns: 2fr 1fr;
+  align-self: stretch;
+}
+
+.dashboard-row > .grid {
+  overflow: auto;
+}
+
+#app > main > div:nth-child(2) {
+  flex: 2 1 0;
+  min-height: 0;
+}
+
+#app > main > div.dashboard-row.dashboard-row--split.dashboard-row--summary {
+  flex: 1.5 1 0;
+  min-height: 0;
+}
+
+#app > main > div.dashboard-row.dashboard-row--split.dashboard-row--bottom {
+  flex: 1 1 0;
+  min-height: 0;
 }
 
 .dashboard-left,
@@ -639,7 +667,7 @@ body::after {
   justify-content: center;
   align-items: center;
   height: 100%;
-  min-height: 0;
+  min-height: 224px;
 }
 
 .summary-total .stat-label,
