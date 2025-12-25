@@ -15,6 +15,9 @@
   --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
   --gap-inner: 6px;
   --gap-outer: 10px;
+  --header-height: 56px;
+  --content-height: calc(100vh - var(--header-height));
+  --ratio-total: 4.5;
 }
 
 *,
@@ -34,7 +37,7 @@ body {
   color: var(--color-text);
   font-family: var(--font-sans);
   line-height: 1.5;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 .text-dense {
@@ -125,7 +128,7 @@ body::after {
 }
 
 .app {
-  display: grid;
+  display: flex;
   grid-template-columns: 240px 1fr;
   gap: var(--gap-outer);
   padding: var(--gap-outer);
@@ -176,6 +179,7 @@ main {
   display: flex;
   flex-direction: column;
   min-height: 0;
+  overflow: auto;
 }
 
 .dashboard-row {
