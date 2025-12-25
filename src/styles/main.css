@@ -137,17 +137,17 @@ body::after {
 }
 
 #app {
-  display: flex;
   height: 100vh;
+  display: flex;
 }
 
 #app > aside {
   flex: 0 0 240px;
 }
 
-header.section--header {
+header.section-header {
   height: 56px;
-  flex-shrink: 0;
+  flex: 0 0 auto;
 }
 
 .sidebar {
@@ -171,6 +171,13 @@ main {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  min-height: 0;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   min-height: 0;
   overflow: auto;
 }
@@ -224,18 +231,18 @@ main {
   overflow: auto;
 }
 
-#app > main > div:nth-child(2) {
-  height: calc(var(--content-height) * 2 / var(--ratio-total));
+#app > .content > main > div:nth-child(1) {
+  flex: 2 1 0;
   min-height: 0;
 }
 
-#app > main > div.dashboard-row.dashboard-row--split.dashboard-row--summary {
-  height: calc(var(--content-height) * 1.5 / var(--ratio-total));
+#app > .content > main > div.dashboard-row.dashboard-row--split.dashboard-row--summary {
+  flex: 1.5 1 0;
   min-height: 0;
 }
 
-#app > main > div.dashboard-row.dashboard-row--split.dashboard-row--bottom {
-  height: calc(var(--content-height) * 1 / var(--ratio-total));
+#app > .content > main > div.dashboard-row.dashboard-row--split.dashboard-row--bottom {
+  flex: 1 1 0;
   min-height: 0;
 }
 
