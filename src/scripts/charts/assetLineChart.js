@@ -1,3 +1,5 @@
+import { cssVar } from "./cssVar.js";
+
 const createSvgElement = (tag) => document.createElementNS("http://www.w3.org/2000/svg", tag);
 
 const buildLabelIndices = (length, count) => {
@@ -85,14 +87,16 @@ export const renderAssetLineChart = (container, series) => {
   baseline.setAttribute("x2", width - paddingX);
   baseline.setAttribute("y1", baselineY);
   baseline.setAttribute("y2", baselineY);
-  baseline.setAttribute("stroke", "rgba(255, 255, 255, 0.16)");
+  const baselineColor = cssVar("--color-divider") || "rgba(217, 217, 217, 0.12)";
+  baseline.setAttribute("stroke", baselineColor);
   baseline.setAttribute("stroke-width", "1");
   baseline.setAttribute("stroke-dasharray", "4 6");
 
   const glow = createSvgElement("path");
   glow.setAttribute("d", pathData);
   glow.setAttribute("fill", "none");
-  glow.setAttribute("stroke", "rgba(200, 242, 107, 0.35)");
+  const glowColor = cssVar("--color-accent-primary-soft") || "rgba(102, 255, 51, 0.35)";
+  glow.setAttribute("stroke", glowColor);
   glow.setAttribute("stroke-width", "12");
   glow.setAttribute("stroke-linecap", "round");
   glow.setAttribute("stroke-linejoin", "round");
@@ -100,7 +104,8 @@ export const renderAssetLineChart = (container, series) => {
   const line = createSvgElement("path");
   line.setAttribute("d", pathData);
   line.setAttribute("fill", "none");
-  line.setAttribute("stroke", "#c8f26b");
+  const lineColor = cssVar("--color-chart-accent-primary") || "#66ff33";
+  line.setAttribute("stroke", lineColor);
   line.setAttribute("stroke-width", "5");
   line.setAttribute("stroke-linecap", "round");
   line.setAttribute("stroke-linejoin", "round");
@@ -108,15 +113,16 @@ export const renderAssetLineChart = (container, series) => {
   const hoverLine = createSvgElement("line");
   hoverLine.setAttribute("y1", plotTop);
   hoverLine.setAttribute("y2", baselineY);
-  hoverLine.setAttribute("stroke", "rgba(255, 255, 255, 0.2)");
+  const hoverLineColor = cssVar("--color-border-neutral") || "rgba(217, 217, 217, 0.2)";
+  hoverLine.setAttribute("stroke", hoverLineColor);
   hoverLine.setAttribute("stroke-width", "1");
   hoverLine.setAttribute("stroke-dasharray", "4 6");
   hoverLine.style.opacity = "0";
 
   const hoverDot = createSvgElement("circle");
   hoverDot.setAttribute("r", "4");
-  hoverDot.setAttribute("fill", "#c8f26b");
-  hoverDot.setAttribute("stroke", "rgba(200, 242, 107, 0.4)");
+  hoverDot.setAttribute("fill", lineColor);
+  hoverDot.setAttribute("stroke", glowColor);
   hoverDot.setAttribute("stroke-width", "3");
   hoverDot.style.opacity = "0";
 
@@ -150,7 +156,8 @@ export const renderAssetLineChart = (container, series) => {
     const label = createSvgElement("text");
     label.setAttribute("x", point.x);
     label.setAttribute("y", labelY);
-    label.setAttribute("fill", "rgba(255, 255, 255, 0.45)");
+    const labelColor = cssVar("--color-text-subtle") || "rgba(217, 217, 217, 0.6)";
+    label.setAttribute("fill", labelColor);
     label.setAttribute("font-size", labelFontSize);
     if (index === 0) {
       label.setAttribute("text-anchor", "start");
@@ -170,8 +177,10 @@ export const renderAssetLineChart = (container, series) => {
   tooltip.style.left = "0";
   tooltip.style.padding = "6px 10px";
   tooltip.style.borderRadius = "999px";
-  tooltip.style.background = "rgba(10, 9, 16, 0.8)";
-  tooltip.style.color = "#f2f0f8";
+  const tooltipBackground = cssVar("--color-bg-surface") || "#1a1a1a";
+  const tooltipColor = cssVar("--color-text-primary") || "#ffffff";
+  tooltip.style.background = tooltipBackground;
+  tooltip.style.color = tooltipColor;
   tooltip.style.fontSize = "0.8rem";
   tooltip.style.whiteSpace = "nowrap";
   tooltip.style.pointerEvents = "none";

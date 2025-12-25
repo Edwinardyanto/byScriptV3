@@ -1,12 +1,6 @@
-const createSvgElement = (tag) => document.createElementNS("http://www.w3.org/2000/svg", tag);
+import { cssVar } from "./cssVar.js";
 
-const chartColors = [
-  "#c8f26b",
-  "#ffd36f",
-  "#8ed3ff",
-  "#9a7bff",
-  "#ff9ab5",
-];
+const createSvgElement = (tag) => document.createElementNS("http://www.w3.org/2000/svg", tag);
 
 const polarToCartesian = (centerX, centerY, radius, angleInDegrees) => {
   const angleInRadians = ((angleInDegrees - 90) * Math.PI) / 180.0;
@@ -41,6 +35,13 @@ export const renderExchangesDonutChart = (container, exchanges) => {
     return;
   }
 
+  const chartColors = [
+    cssVar("--color-chart-accent-primary") || "#66ff33",
+    cssVar("--color-chart-secondary") || "#00f7d5",
+    cssVar("--color-chart-tertiary") || "#3d2c8d",
+    cssVar("--color-chart-muted") || "rgba(217, 217, 217, 0.5)",
+    cssVar("--color-chart-muted") || "rgba(217, 217, 217, 0.5)",
+  ];
   const width = 214;
   const height = 214;
   const strokeWidth = 18;
@@ -106,7 +107,8 @@ export const renderExchangesDonutChart = (container, exchanges) => {
   center.setAttribute("cx", `${width / 2}`);
   center.setAttribute("cy", `${height / 2}`);
   center.setAttribute("r", `${radius - strokeWidth / 2}`);
-  center.setAttribute("fill", "rgba(18, 15, 26, 0.9)");
+  const centerFill = cssVar("--color-bg-surface") || "#1a1a1a";
+  center.setAttribute("fill", centerFill);
   svg.appendChild(center);
   svg.appendChild(labelGroup);
 
