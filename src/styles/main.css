@@ -801,18 +801,21 @@ main {
   background:
     radial-gradient(
       140% 120% at 12% 0%,
-      color-mix(in srgb, var(--color-alert-error) 28%, transparent),
+      color-mix(in srgb, var(--color-alert-error) 45%, transparent),
       transparent 62%
     ),
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--color-alert-error-soft) 85%, transparent),
-      var(--color-bg-surface-raised)
-    );
-  border: 1px solid color-mix(in srgb, var(--color-alert-error) 80%, var(--color-bg-surface-raised));
+    radial-gradient(
+      120% 120% at 95% 95%,
+      color-mix(in srgb, var(--color-alert-error) 22%, transparent),
+      transparent 65%
+    ),
+    linear-gradient(180deg, var(--color-alert-error-soft), transparent),
+    linear-gradient(180deg, var(--color-alert-error-soft), var(--color-bg-surface-raised));
+  border-color: color-mix(in srgb, var(--color-alert-error) 88%, transparent);
   box-shadow:
-    inset 0 0 14px color-mix(in srgb, var(--color-alert-error) 18%, transparent),
-    0 0 12px color-mix(in srgb, var(--color-alert-error-soft) 22%, transparent);
+    inset 0 0 0 1px color-mix(in srgb, var(--color-alert-error) 34%, transparent),
+    inset 0 0 18px color-mix(in srgb, var(--color-alert-error) 18%, transparent),
+    0 16px 40px color-mix(in srgb, var(--color-alert-error) 18%, transparent);
 }
 
 .alert-card[data-alert-state="error"][data-alert-status="active"] .badge--warning {
