@@ -130,8 +130,6 @@ body::after {
 .app {
   display: flex;
   grid-template-columns: 240px 1fr;
-  min-height: 100dvh;
-  min-height: 100vh;
   gap: var(--gap-outer);
   padding: var(--gap-outer);
   position: relative;
@@ -139,36 +137,17 @@ body::after {
 }
 
 #app {
-  min-height: 100dvh;
-  min-height: 100vh;
   display: flex;
+  height: 100vh;
 }
 
 #app > aside {
   flex: 0 0 240px;
 }
 
-#app > main {
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-header {
+header.section--header {
   height: 56px;
   flex-shrink: 0;
-}
-
-header {
-  height: var(--header-height);
-}
-
-#app > aside {
-  grid-row: 1 / span 2;
-}
-
-header {
-  height: 56px;
-  grid-column: 2;
 }
 
 .sidebar {
@@ -183,18 +162,17 @@ header {
 }
 
 main {
-  display: flex;
-  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
 }
 
 .main {
   display: flex;
   flex-direction: column;
-  height: var(--content-height);
   gap: 6px;
   min-height: 0;
-  overflow: hidden;
-  grid-column: 2;
+  overflow: auto;
 }
 
 .dashboard-row {
