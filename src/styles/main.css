@@ -15,6 +15,9 @@
   --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
   --gap-inner: 6px;
   --gap-outer: 10px;
+  --header-height: 56px;
+  --content-height: calc(100vh - var(--header-height));
+  --ratio-total: 4.5;
 }
 
 *,
@@ -155,6 +158,10 @@ header {
   flex-shrink: 0;
 }
 
+header {
+  height: var(--header-height);
+}
+
 .sidebar {
   background: linear-gradient(180deg, rgba(44, 36, 64, 0.96), rgba(14, 12, 20, 0.98));
   border: 1px solid var(--color-border);
@@ -174,9 +181,10 @@ main {
 .main {
   display: flex;
   flex-direction: column;
-  flex: 1 1 auto;
+  height: var(--content-height);
   gap: 6px;
   min-height: 0;
+  overflow: hidden;
 }
 
 .dashboard-row {
@@ -187,6 +195,7 @@ main {
   position: relative;
   width: 100%;
   min-height: 0;
+  overflow: hidden;
 }
 
 .dashboard-row + .dashboard-row {
@@ -228,17 +237,17 @@ main {
 }
 
 #app > main > div:nth-child(2) {
-  flex: 2 1 auto;
+  height: calc(var(--content-height) * 2 / var(--ratio-total));
   min-height: 0;
 }
 
 #app > main > div.dashboard-row.dashboard-row--split.dashboard-row--summary {
-  flex: 1.5 1 auto;
+  height: calc(var(--content-height) * 1.5 / var(--ratio-total));
   min-height: 0;
 }
 
 #app > main > div.dashboard-row.dashboard-row--split.dashboard-row--bottom {
-  flex: 1 1 auto;
+  height: calc(var(--content-height) * 1 / var(--ratio-total));
   min-height: 0;
 }
 
