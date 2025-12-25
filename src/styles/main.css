@@ -37,7 +37,7 @@ body {
   color: var(--color-text);
   font-family: var(--font-sans);
   line-height: 1.5;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 .text-dense {
@@ -128,9 +128,10 @@ body::after {
 }
 
 .app {
-  display: grid;
+  display: flex;
   grid-template-columns: 240px 1fr;
-  height: 100vh;
+  min-height: 100dvh;
+  min-height: 100vh;
   gap: var(--gap-outer);
   padding: var(--gap-outer);
   position: relative;
@@ -140,6 +141,21 @@ body::after {
 #app {
   min-height: 100dvh;
   min-height: 100vh;
+  display: flex;
+}
+
+#app > aside {
+  flex: 0 0 240px;
+}
+
+#app > main {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+header {
+  height: 56px;
+  flex-shrink: 0;
 }
 
 header {
