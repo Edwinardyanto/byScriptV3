@@ -127,7 +127,6 @@ body::after {
 .app {
   display: grid;
   grid-template-columns: 240px 1fr;
-  height: 100vh;
   gap: var(--gap-outer);
   padding: var(--gap-outer);
   position: relative;
@@ -135,8 +134,17 @@ body::after {
 }
 
 #app {
-  min-height: 100dvh;
-  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+}
+
+#app > aside {
+  flex: 0 0 240px;
+}
+
+header.section-header {
+  height: 56px;
+  flex: 0 0 auto;
 }
 
 .sidebar {
@@ -151,17 +159,22 @@ body::after {
 }
 
 main {
-  display: flex;
-  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
 }
 
 .main {
   display: flex;
   flex-direction: column;
-  height: calc(100dvh - 56px);
-  height: calc(100vh - 56px);
   gap: 6px;
-  overflow: hidden;
+  min-height: 0;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   min-height: 0;
 }
 
@@ -173,10 +186,11 @@ main {
   position: relative;
   width: 100%;
   min-height: 0;
+  overflow: hidden;
 }
 
 .dashboard-row + .dashboard-row {
-  margin-top: 16px;
+  margin-top: 0;
 }
 
 .dashboard-row--full {
@@ -213,17 +227,17 @@ main {
   overflow: auto;
 }
 
-#app > main > div:nth-child(2) {
+#app > .content > main > div:nth-child(1) {
   flex: 2 1 0;
   min-height: 0;
 }
 
-#app > main > div.dashboard-row.dashboard-row--split.dashboard-row--summary {
+#app > .content > main > div.dashboard-row.dashboard-row--split.dashboard-row--summary {
   flex: 1.5 1 0;
   min-height: 0;
 }
 
-#app > main > div.dashboard-row.dashboard-row--split.dashboard-row--bottom {
+#app > .content > main > div.dashboard-row.dashboard-row--split.dashboard-row--bottom {
   flex: 1 1 0;
   min-height: 0;
 }
