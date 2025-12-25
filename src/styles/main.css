@@ -768,12 +768,8 @@ main {
   gap: 5px;
   padding: 5px 12px;
   border-radius: var(--radius-md);
-  background: linear-gradient(
-      180deg,
-      var(--color-alert-error-soft),
-      var(--color-bg-contrast)
-    );
-  border: 1px solid var(--color-alert-error);
+  background: var(--color-bg-contrast);
+  border: 1px solid var(--color-border-neutral);
   height: 100%;
 }
 
@@ -795,6 +791,23 @@ main {
   color: var(--color-text-muted);
   font-size: 0.75rem;
   line-height: 1.1;
+}
+
+.alert-card .badge--warning {
+  display: none;
+}
+
+.alert-card[data-alert-state="error"][data-alert-status="active"] {
+  background: linear-gradient(
+      180deg,
+      var(--color-alert-error-soft),
+      var(--color-bg-contrast)
+    );
+  border: 1px solid var(--color-alert-error);
+}
+
+.alert-card[data-alert-state="error"][data-alert-status="active"] .badge--warning {
+  display: inline-flex;
 }
 
 .button {
