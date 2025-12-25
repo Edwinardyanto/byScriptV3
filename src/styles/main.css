@@ -162,6 +162,15 @@ header {
   height: var(--header-height);
 }
 
+#app > aside {
+  grid-row: 1 / span 2;
+}
+
+header {
+  height: 56px;
+  grid-column: 2;
+}
+
 .sidebar {
   background: linear-gradient(180deg, rgba(44, 36, 64, 0.96), rgba(14, 12, 20, 0.98));
   border: 1px solid var(--color-border);
@@ -185,6 +194,7 @@ main {
   gap: 6px;
   min-height: 0;
   overflow: hidden;
+  grid-column: 2;
 }
 
 .dashboard-row {
