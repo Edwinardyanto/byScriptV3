@@ -20,7 +20,7 @@
   --color-alert-critical: #ff5f5f;
   --color-alert-critical-soft: rgba(255, 95, 95, 0.12);
   --color-alert-error: var(--color-alert-critical);
-  --color-alert-error-soft: rgba(255, 95, 95, 0.25);
+  --color-alert-error-soft: rgba(255, 95, 95, 0.22);
 
   --color-chart-accent-primary: rgba(102, 255, 51, 0.75);
   --color-chart-secondary: rgba(0, 247, 213, 0.6);
