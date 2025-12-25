@@ -127,7 +127,6 @@ body::after {
 .app {
   display: grid;
   grid-template-columns: 240px 1fr;
-  height: 100vh;
   gap: var(--gap-outer);
   padding: var(--gap-outer);
   position: relative;
@@ -135,8 +134,17 @@ body::after {
 }
 
 #app {
-  min-height: 100dvh;
-  min-height: 100vh;
+  display: flex;
+  height: 100vh;
+}
+
+#app > aside {
+  flex: 0 0 240px;
+}
+
+header.section--header {
+  height: 56px;
+  flex-shrink: 0;
 }
 
 .sidebar {
@@ -151,18 +159,17 @@ body::after {
 }
 
 main {
-  display: flex;
-  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
 }
 
 .main {
   display: flex;
   flex-direction: column;
-  height: calc(100dvh - 56px);
-  height: calc(100vh - 56px);
   gap: 6px;
-  overflow: hidden;
   min-height: 0;
+  overflow: auto;
 }
 
 .dashboard-row {
@@ -173,10 +180,11 @@ main {
   position: relative;
   width: 100%;
   min-height: 0;
+  overflow: hidden;
 }
 
 .dashboard-row + .dashboard-row {
-  margin-top: 16px;
+  margin-top: 0;
 }
 
 .dashboard-row--full {
