@@ -522,8 +522,8 @@ main {
 }
 
 .badge--warning {
-  background: rgba(255, 123, 123, 0.2);
-  color: var(--color-warning);
+  background: var(--color-alert-error);
+  color: var(--color-bg-primary);
 }
 
 .chart-placeholder {
@@ -768,19 +768,19 @@ main {
   gap: 5px;
   padding: 5px 12px;
   border-radius: var(--radius-md);
-  background: linear-gradient(180deg, rgba(92, 35, 35, 0.35), rgba(48, 22, 30, 0.7));
-  border: 1px solid rgba(255, 123, 123, 0.25);
-  box-shadow: inset 0 0 10px rgba(255, 123, 123, 0.1), 0 0 18px rgba(255, 123, 123, 0.08);
+  background: var(--color-bg-contrast);
+  border: 1px solid var(--color-border-neutral);
   height: 100%;
 }
 
 .alert-title {
   font-weight: 600;
+  color: var(--color-text-primary);
 }
 
 .alert-message {
   font-size: 0.85rem;
-  color: var(--color-muted);
+  color: var(--color-text-muted);
   line-height: 1.1;
 }
 
@@ -788,9 +788,26 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: var(--color-muted);
+  color: var(--color-text-muted);
   font-size: 0.75rem;
   line-height: 1.1;
+}
+
+.alert-card .badge--warning {
+  display: none;
+}
+
+.alert-card[data-alert-state="error"][data-alert-status="active"] {
+  background: linear-gradient(
+      180deg,
+      var(--color-alert-error-soft),
+      var(--color-bg-contrast)
+    );
+  border: 1px solid var(--color-alert-error);
+}
+
+.alert-card[data-alert-state="error"][data-alert-status="active"] .badge--warning {
+  display: inline-flex;
 }
 
 .button {
@@ -805,9 +822,16 @@ main {
 }
 
 .alert-card .button {
-  background: rgba(200, 242, 107, 0.18);
-  border-color: rgba(200, 242, 107, 0.4);
-  box-shadow: inset 0 0 10px rgba(200, 242, 107, 0.18), 0 0 18px rgba(200, 242, 107, 0.2);
+  background: var(--color-accent-primary);
+  border-color: var(--color-accent-primary);
+  color: var(--color-bg-primary);
+  box-shadow: inset 0 0 10px color-mix(in srgb, var(--color-accent-primary) 18%, transparent),
+    0 0 18px color-mix(in srgb, var(--color-accent-primary) 20%, transparent);
+}
+
+.alert-card .button:hover {
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
 }
 
 .button--ghost {
