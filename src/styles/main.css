@@ -139,6 +139,15 @@ body::after {
   min-height: 100vh;
 }
 
+#app > aside {
+  grid-row: 1 / span 2;
+}
+
+header {
+  height: 56px;
+  grid-column: 2;
+}
+
 .sidebar {
   background: linear-gradient(180deg, rgba(44, 36, 64, 0.96), rgba(14, 12, 20, 0.98));
   border: 1px solid var(--color-border);
@@ -161,8 +170,9 @@ main {
   height: calc(100dvh - 56px);
   height: calc(100vh - 56px);
   gap: 6px;
-  overflow: hidden;
   min-height: 0;
+  overflow: hidden;
+  grid-column: 2;
 }
 
 .dashboard-row {
@@ -173,10 +183,11 @@ main {
   position: relative;
   width: 100%;
   min-height: 0;
+  overflow: hidden;
 }
 
 .dashboard-row + .dashboard-row {
-  margin-top: 16px;
+  margin-top: 0;
 }
 
 .dashboard-row--full {
